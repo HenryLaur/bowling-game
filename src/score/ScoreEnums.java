@@ -14,6 +14,7 @@ public enum ScoreEnums {
     STRIKE(10),
     SPARE(10);
     private final int value;
+
     ScoreEnums(int value) {
         this.value = value;
     }

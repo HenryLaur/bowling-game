@@ -4,11 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import score.ScoreEnums;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FinalFrameTest {
 
     private FinalFrame frame;
+
     @BeforeEach
     void setUp() {
         this.frame = new FinalFrame();
@@ -18,12 +20,14 @@ class FinalFrameTest {
     void isCurrentFrameCompletedFalse() {
         assertFalse(frame.isCurrentFrameCompleted());
     }
+
     @Test
     void isCurrentFrameCompletedTwoThrows() {
         frame.setFirstThrow(ScoreEnums.ONE);
         frame.setSecondThrow(ScoreEnums.TWO);
         assertFalse(frame.isCurrentFrameCompleted());
     }
+
     @Test
     void isCurrentFrameCompletedTrueStrike() {
         frame.setFirstThrow(ScoreEnums.STRIKE);

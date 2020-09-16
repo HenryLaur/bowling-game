@@ -13,12 +13,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class SpareSpecialPointsTest {
 
     private SpareSpecialPoints spareSpecialPoints;
+
     @BeforeEach
     void setUp() {
         spareSpecialPoints = new SpareSpecialPoints();
     }
-
-
 
     @Test
     void canAddSpecialPointsWithEnoughFrames() {
@@ -47,7 +46,6 @@ class SpareSpecialPointsTest {
         framesList.add(new Frame());
         assertFalse(spareSpecialPoints.canAddSpecialPoints(framesList, frame));
     }
-
 
     @Test
     void addSpecialPoints() {

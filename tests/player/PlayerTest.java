@@ -1,6 +1,5 @@
 package player;
 
-import frame.Frame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import score.Score;
@@ -11,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlayerTest {
 
     private Player player;
+
     @BeforeEach
     void setUp() {
 
@@ -22,6 +22,7 @@ class PlayerTest {
         player.getScore().getCurrentFrame().setFirstThrow(ScoreEnums.THREE);
         assertFalse(player.checkIfIsSpare(ScoreEnums.ONE));
     }
+
     @Test
     void checkIfIsSpare() {
         player.getScore().getCurrentFrame().setPoints(ScoreEnums.THREE.getValue());
@@ -32,6 +33,7 @@ class PlayerTest {
     void convertIntToScoreEnum() {
         assertEquals(ScoreEnums.SIX, player.convertIntToScoreEnum(6));
     }
+
     @Test
     void convertIntToScoreEnumStrike() {
         assertEquals(ScoreEnums.STRIKE, player.convertIntToScoreEnum(10));
@@ -44,14 +46,13 @@ class PlayerTest {
 
     @Test
     void handleFirstThrow() {
-        player.handleFirstThrow(ScoreEnums.ONE ,player.getScore().getCurrentFrame());
+        player.handleFirstThrow(ScoreEnums.ONE, player.getScore().getCurrentFrame());
         assertEquals(ScoreEnums.ONE, player.getScore().getCurrentFrame().getFirstThrow());
     }
 
-
     @Test
     void handleRegularSecondThrow() {
-        player.handleRegularSecondThrow(ScoreEnums.ONE ,player.getScore().getCurrentFrame());
+        player.handleRegularSecondThrow(ScoreEnums.ONE, player.getScore().getCurrentFrame());
         assertEquals(ScoreEnums.ONE, player.getScore().getCurrentFrame().getSecondThrow());
     }
 

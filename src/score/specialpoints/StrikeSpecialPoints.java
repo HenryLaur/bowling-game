@@ -2,6 +2,7 @@ package score.specialpoints;
 
 import frame.Frame;
 import score.ScoreEnums;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,9 +27,9 @@ public class StrikeSpecialPoints implements SpecialPoints {
     @Override
     public void addSpecialPoints(List<Frame> frames, Frame frameWithSpecialPoints) {
         int points = frames.get(frames.indexOf(frameWithSpecialPoints) + NEXT_FRAME).getFirstThrow().getValue();
-        if(frames.get(frames.indexOf(frameWithSpecialPoints) + NEXT_FRAME).getSecondThrow() == ScoreEnums.SPARE) {
+        if (frames.get(frames.indexOf(frameWithSpecialPoints) + NEXT_FRAME).getSecondThrow() == ScoreEnums.SPARE) {
             points = ScoreEnums.SPARE.getValue();
-        } else if(frames.get(frames.indexOf(frameWithSpecialPoints) + NEXT_FRAME).getSecondThrow() != null) {
+        } else if (frames.get(frames.indexOf(frameWithSpecialPoints) + NEXT_FRAME).getSecondThrow() != null) {
             points += frames.get(frames.indexOf(frameWithSpecialPoints) + NEXT_FRAME).getSecondThrow().getValue();
         } else {
             points += frames.get(frames.indexOf(frameWithSpecialPoints) + FRAME_AFTER_NEXT).getFirstThrow().getValue();

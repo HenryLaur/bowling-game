@@ -2,10 +2,8 @@ package game;
 
 import player.Player;
 import score.Score;
-import score.ScoreEnums;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,19 +17,16 @@ public class BowlingGame {
         for (int i = 0; i < numberOfPlayers; i++) {
             players.add(new Player(new Score()));
         }
-        while(!gameOver(players)) {
+        while (!gameOver(players)) {
             for (int i = 0; i < numberOfPlayers; i++) {
-                while(true) {
+                do {
                     System.out.println("How many points did player " + (i + 1) + " score?");
                     int points = in.nextInt();
                     players.get(i).bowl(points);
-                    System.out.print("Player " + ( i +1 )  + " score: ");
+                    System.out.print("Player " + (i + 1) + " score: ");
                     players.get(i).getScore().displayScoreToConsole();
                     System.out.println();
-                    if(players.get(i).isCurrentFrameCompleted()) {
-                        break;
-                    }
-                }
+                } while (!players.get(i).isCurrentFrameCompleted());
             }
             askToSeeTotalScoreOfPlayers(in, numberOfPlayers, players);
             askToSeeAllScoreOfPlayers(in, numberOfPlayers, players);
@@ -41,7 +36,7 @@ public class BowlingGame {
     private static void askToSeeTotalScoreOfPlayers(Scanner in, int numberOfPlayers, List<Player> players) {
         System.out.println("See total score of all players?(y/n)");
         String totalScore = in.next();
-        if(totalScore.equals("y")) {
+        if (totalScore.equals("y")) {
             for (int i = 0; i < numberOfPlayers; i++) {
                 System.out.println("Player " + (i + 1) + " score: " + players.get(i).getScore().getTotalScore());
             }
@@ -51,7 +46,7 @@ public class BowlingGame {
     private static void askToSeeAllScoreOfPlayers(Scanner in, int numberOfPlayers, List<Player> players) {
         System.out.println("See all score of all players?(y/n)");
         String AllScore = in.next();
-        if(AllScore.equals("y")) {
+        if (AllScore.equals("y")) {
             for (int i = 0; i < numberOfPlayers; i++) {
                 players.get(i).getScore().displayScoreToConsole();
                 System.out.println();
